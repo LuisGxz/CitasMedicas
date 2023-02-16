@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Distancia desde nuestra ubicación a la ciudad de Quito</title>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Distancia desde nuestra ubicación a la ciudad de Quito</h1>
+    <div id="map"></div>
+    <p id="distance"></p>
+
+    <script>
+      function initMap() {
+        // Obtenemos la ubicación actual
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            // Creamos un objeto LatLng con la ubicación actual
+            const latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+            // Creamos un objeto LatLng con la ubicación de Quito
+            const quitoLatLng = new google.maps.LatLng(-0.1806532, -78.4678382);
+
+            // Creamos un objeto de dirección
+            const directionsService = new google.maps.DirectionsService();
+
+            // Creamos un objeto de mapa
+            const map = new google.maps.Map(document.getElementById("map"), {
+              center: latLng,
+              zoom: 10
+            });
+
+            // Creamos un objeto de visualización de direcciones
+            const directionsDisplay = new google.maps.DirectionsRenderer({
+              map: map
+            });
+
+            // Creamos una solicitud de dirección
+            const request = {
+              origin: latLng,
+              destination: quitoLatLng,
+              travelMode: google.maps.TravelMode.DRIVING
+            };
+
+            // Enviamos la solicitud de dirección
+            directionsService.route(request, function(response, status) {
+              if (status == google.maps.DirectionsStatus.OK) {
+                // Mostramos la ruta en el mapa
+                directionsDisplay.setDirections(response);
+
+                // Obtenemos la distancia en metros
+                const distance = response.routes[0].legs[0].distance.value;
+
+                // Convertimos la distancia a kilómetros
+                const distanceInKm = distance / 1000;
+
+                // Mostramos la distancia en el párrafo correspondiente
+                document.getElementById("distance").textContent = "La distancia desde tu ubicación actual a Quito es de " + distanceInKm.toFixed(2) + " km.";
+              }
+            });
+          });
+        } else {
+          document.getElementById("distance").textContent = "La geolocalización no está disponible en tu navegador.";
+        }
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=API_KEY&callback=initMap" async defer></script>
+  </body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link rel="icon" href="assets/img/logo.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css " href="assets/css/agendar.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+        .dialog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        .dialog-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 400px;
+        }
+
+        .dialog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .dialog-body {
+            padding: 20px 0;
+        }
+
+        .dialog-actions {
+            margin-top: 20px;
+        }
+
+        .dialog-actions button {
+            margin-right: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #3b63b2c3;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dialog-actions button:hover {
+            background-color: #3b63b2c3;
+        }
+
+        #close-button {
+            padding: 5px 10px;
+            border-radius: 50%;
+            background-color: #3b63b2c3;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dialog-confirm {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .dialog-content-confirm {
+            position: relative;
+            margin: auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            max-height: 90%;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            overflow: auto;
+        }
+
+        .dialog-header-confirm h2 {
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .dialog-body-confirm p {
+            margin-bottom: 1rem;
+        }
+
+        .dialog-footer-confirm {
+            margin-top: 1rem;
+            text-align: right;
+        }
+
+        .button-confirm {
+            background-color: #3b63b2c3;
+            border-radius: 5px;
+            color: white;
+            border: none;
+
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .button-confirm:hover {
+            background-color: #4e79cebf;
+        }
+
+        .button-confirm:active {
+            background-color: #3b63b2c3;
+        }
+
+        .btn {
+            display: block;
+            width: 100px;
+            height: 50px;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            /*background-image: linear-gradient(to right, #680197, #00ffbf,#c046f8);*/
+            background-color: #3b63b2c3;
+            background-size: 200%;
+            font-size: 16px;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            margin: 15px 15px 0;
+            cursor: pointer;
+            transition: .5s;
+        }
+    </style>
+    <script defer src="./assets/js/script.js"></script>
+    <title>Agendar citas</title>
+</head>
+
+<body>
+
+    <body>
+        <header>
+            <img onclick="irAHome()" src="./assets/img/logo-hospital.jfif" class="logo">
+            <div class="usuario">
+                <div class="i">
+                    <i class="fas fa-user"></i>
+                </div>
+                <span class="name">Jose Manuel Perez Dominguez</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="menu-lateral-izquierdo">
+                <ul class="opciones">
+                    <li class="agendar-cita-opcion">Agendar citas médicas</li>
+                    <li onclick="irConsultarCitas()">Consulta de citas médicas</li>
+                    <li onclick="irCancelarCitas()">Cancelación de citas médicas</li>
+                </ul>
+            </div>
+            <div class="contenido">
+                <button onclick="irAHome()" class="btn">Volver</button>
+                <script>
+                    function irAHome() {
+                      window.location.href = "home.html";
+                    }
+                    function irConsultarCitas() {
+                          window.location.href = "consultar_citas.html";
+                    }
+                    function irCancelarCitas() {
+                          window.location.href = "cancelar_citas.html";
+                    }
+                </script>
+                <div class="container">
+                    <div class="left-column">
+                        <h3>Datos del paciente: </h3>
+                        <div class="input-container">
+                            <label class="label">Cédula:</label>
+                            <input type="text" class="input" value="0981148494">
+                        </div>
+                        <div class="input-container">
+                            <label class="label">Nombre:</label>
+                            <input type="text" class="input" value="Jose Manuel">
+                        </div>
+                        <div class="input-container">
+                            <label class="label">Apellido:</label>
+                            <input type="text" class="input" value="Perez Dominguez">
+                        </div>
+                        <div class="input-container">
+                            <label class="label">Edad:</label>
+                            <input type="text" class="input" value="8">
+                        </div>
+                    </div>
+                    <div class="right-column">
+                        <h3>Datos para la confirmación de la cita</h3>
+                        <div class="input-container">
+                            <label class="label">Correo electrónico:</label>
+                            <input type="text" class="input" value="JosePerezDominguez@gmail.com">
+                        </div>
+                        <div class="input-container">
+                            <label class="label">Celular:</label>
+                            <input type="text" class="input" value="0945806780">
+                        </div>
+                        <div class="input-container">
+                            <label class="label">Operadora:</label>
+                            <input type="text" class="input" value="Movistar">
+                        </div>
+                    </div>
+                </div>
+                <div  class="mid-banner">
+                    <h3>Datos de la cita</h3>
+                </div>
+                <div class="especialidad">
+                    <div class="input-container input-container-agendar">
+                        <div class="opcion">
+                            <label class="label">Especialidad:</label>
+                            <input type="text" class="input" value="Pediatria">
+                        </div>
+                        <button onclick="MostrarDisponibilidad()">Buscar disponibilidad</button>
+                        
+                    </div>
+                </div>
+                <div id="mid-banner" class="mid-banner">
+                    <h3>Disponibilidad de díás: </h3>
+                </div>
+                <div id="contenedor" class="contenedor">
+                    <script>
+                        const midbanner = document.getElementById('mid-banner');
+                        const contenedor = document.getElementById('contenedor');
+                        function MostrarDisponibilidad() {
+                            midbanner.style.display = 'block';
+                            contenedor.style.display = 'block';
+                        }
+                    </script>
+                    <table class="tabla">
+                        <tr>
+                            <th>Especialista</th>
+                            <th>Horario</th>
+                            <th>Seleccionar</th>
+                        </tr>
+                        <tr>
+                            <td>Mario Lopez</td>
+                            <td>
+                                <select class="select" id="horario">
+                                    <option value="8:00am">8:00am</option>
+                                    <option value="9:00am">9:00am</option>
+                                    <option value="10:00am">10:00am</option>
+                                    <option value="11:00am">11:00am</option>
+                                    <option value="12:00pm">12:00pm</option>
+                                    <option value="1:00pm">1:00pm</option>
+                                    <option value="2:00pm">2:00pm</option>
+                                    <option value="3:00pm">3:00pm</option>
+                                </select>
+                            </td>
+                            <td><button id="open-dialog1" class="button open-dialog">Seleccionar</button></td>
+                        </tr>
+                        <tr>
+                            <td>Juan Gonzalez</td>
+                            <td>
+                                <select class="select" id="horario">
+                                    <option value="8:00am">8:00am</option>
+                                    <option value="9:00am">9:00am</option>
+                                    <option value="10:00am">10:00am</option>
+                                    <option value="11:00am">11:00am</option>
+                                    <option value="12:00pm">12:00pm</option>
+                                    <option value="1:00pm">1:00pm</option>
+                                    <option value="2:00pm">2:00pm</option>
+                                    <option value="3:00pm">3:00pm</option>
+                                </select>
+                            </td>
+                            <td><button id="open-dialog2" class="button">Seleccionar</button></td>
+                        </tr>
+                        <tr>
+                            <td>Martha Perez</td>
+                            <td>
+                                <select class="select" id="horario">
+                                    <option value="8:00am">8:00am</option>
+                                    <option value="9:00am">9:00am</option>
+                                    <option value="10:00am">10:00am</option>
+                                    <option value="11:00am">11:00am</option>
+                                    <option value="12:00pm">12:00pm</option>
+                                    <option value="1:00pm">1:00pm</option>
+                                    <option value="2:00pm">2:00pm</option>
+                                    <option value="3:00pm">3:00pm</option>
+                                </select>
+                            </td>
+                            <td><button id="open-dialog3" class="button">Seleccionar</button></td>
+                        </tr>
+                        <tr>
+                            <td>Ricardo Ramirez</td>
+                            <td>
+                                <select class="select" id="horario">
+                                    <option value="8:00am">8:00am</option>
+                                    <option value="9:00am">9:00am</option>
+                                    <option value="10:00am">10:00am</option>
+                                    <option value="11:00am">11:00am</option>
+                                    <option value="12:00pm">12:00pm</option>
+                                    <option value="1:00pm">1:00pm</option>
+                                    <option value="2:00pm">2:00pm</option>
+                                    <option value="3:00pm">3:00pm</option>
+                                </select>
+                            </td>
+                            <td><button id="open-dialog4" class="button">Seleccionar</button></td>
+                        </tr>
+                        <tr>
+                            <td>Miguel Gomez</td>
+                            <td>
+                                <select class="select" id="horario">
+                                    <option value="8:00am">8:00am</option>
+                                    <option value="9:00am">9:00am</option>
+                                    <option value="10:00am">10:00am</option>
+                                    <option value="11:00am">11:00am</option>
+                                    <option value="12:00pm">12:00pm</option>
+                                    <option value="1:00pm">1:00pm</option>
+                                    <option value="2:00pm">2:00pm</option>
+                                    <option value="3:00pm">3:00pm</option>
+                                </select>
+                            </td>
+                            <td><button id="open-dialog5" class="button">Seleccionar</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="dialog" class="dialog">
+                <div class="dialog-content">
+                    <div class="dialog-header">
+                        <h2>Confirmación</h2>
+                        <button id="close-button">X</button>
+                    </div>
+                    <div class="dialog-body">
+                        <p>¿Está seguro de agendar la cita seleccionada?</p>
+                        <div class="dialog-actions">
+                            <button id="confirm-button">Sí</button>
+                            <button id="cancel-button">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="dialog-confirm" class="dialog-confirm">
+                <div class="dialog-content-confirm">
+                    <div class="dialog-header-confirm">
+                        <h2>Resumen de la cita médica</h2>
+                    </div>
+                    <div class="dialog-body-confirm">
+                        <p><strong>Fecha de registro:</strong> 23/02/2023</p>
+                        <p><strong>Hora de la cita:</strong> 09:00</p>
+                        <p><strong>Médico:</strong> Juan Gonzalez</p>
+                        <p><strong>Área:</strong> Pediatria</p>
+                        <p>Estimado Sr./Sra. Jose Perez Dominguez,</p>
+                        <p>Confirmamos que su cita médica de consulta ha sido agendada para el día 23 de febrero del
+                            2023 a las
+                            09:00 con el Dr. Juan Gonzalez en el área de pediatria.</p>
+                        <p>Por favor, preséntese 30 minutos antes.</p>
+                    </div>
+                    <div class="dialog-footer-confirm">
+                        <button id="confirm-button-confirm" class="button-confirm">Confirmar</button>
+                        <button id="cancel-button-confirm" class="button-confirm">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+    </body>
+
+</html>

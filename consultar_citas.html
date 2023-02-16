@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link rel="icon" href="assets/img/logo.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css " href="assets/css/agendar.css">
+
+    <script defer src="./assets/js/script.js"></script>
+    <title>Consultar citas</title>
+
+    <style>
+        .container {
+            width: 1200px;
+            max-width: 1200px;
+            padding: 10px 30px 30px;
+            
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        thead {
+            background-color: #3b63b2c3;
+            color: #fff;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .datos-principales{
+            margin: 10px 30px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <body>
+        <header>
+            <img onclick="irAHome()" src="./assets/img/logo-hospital.jfif" class="logo">
+            <div class="usuario">
+                <div class="i">
+                    <i class="fas fa-user"></i>
+                </div>
+                <span class="name">Jose Manuel Perez Dominguez</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="menu-lateral-izquierdo">
+                <ul class="opciones">
+                    <li onclick="irAgendarCitas()">Agendar citas médicas</li>
+                    <li class="agendar-cita-opcion">Consulta de citas médicas</li>
+                    <li onclick="irCancelarCitas()">Cancelación de citas médicas</li>
+                </ul>
+            </div>
+            <div class="contenido">
+                <button onclick="irAHome()" class="btn">Volver</button>
+                <script>
+                    function irAgendarCitas() {
+                        window.location.href = "agendar_citas.html";
+                    }
+                    function irAHome() {
+                        window.location.href = "home.html";
+                    }
+                    function irCancelarCitas() {
+                          window.location.href = "cancelar_citas.html";
+                    }
+                </script>
+
+                <div class="mid-banner-consultar">
+                    <h3>Citas medicas Registradas</h3>
+                </div>
+                <div class="contenedor-consultas">
+                    <div class="datos-principales">
+                        <p><strong>Cedula:</strong> 0981148494</p>
+                        <p><strong>Nombre:</strong> Jose Manuel Perez Dominguez</p>
+                    </div>
+                    <div class="container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Especialidad</th>
+                                    <th>Fecha de la cita</th>
+                                    <th>Hora de la cita</th>
+                                    <th>Médico</th>
+                                    <th>Nota</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Cardiología</td>
+                                    <td>22/02/2023</td>
+                                    <td>10:30 AM</td>
+                                    <td>Dr. Pérez</td>
+                                    <td>Recordar llevar exámenes anteriores</td>
+                                </tr>
+                                <tr>
+                                    <td>Dermatología</td>
+                                    <td>25/02/2023</td>
+                                    <td>2:00 PM</td>
+                                    <td>Dra. Gómez</td>
+                                    <td>Uso de protector solar antes de la cita</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    </body>
+
+</html>

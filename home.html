@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link rel="icon" href="assets/img/logo.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css " href="assets/css/home.css">
+    <title>Home</title>
+</head>
+
+<body>
+
+    <body>
+        <header>
+            <img src="./assets/img/logo-hospital.jfif" class="logo">
+            <div class="usuario">
+                <div class="i">
+                    <i class="fas fa-user"></i>
+                </div>
+                <span class="name">Jose Manuel Perez Dominguez</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="menu-lateral-izquierdo">
+                <ul class="opciones">
+                    <li onclick="irAgendarCitas()">Agendar citas médicas</li>
+                    <li onclick="irConsultarCitas()">Consulta de citas médicas</li>
+                    <li onclick="irCancelarCitas()">Cancelación de citas médicas</li>
+                </ul>
+            </div>
+            <div class="contenido">
+                <div onclick="irAgendarCitas()" class="container">
+                    <img src="./assets/img/icons8-calendario-100.png" alt="imagen" class="image">
+                    <h3  class="title">Agendar cita médica</h3>
+                    <script>
+                        function irAgendarCitas() {
+                          window.location.href = "agendar_citas.html";
+                        }
+                        function irCancelarCitas() {
+                          window.location.href = "cancelar_citas.html";
+                    }
+                    </script>
+                </div>
+                <div onclick="irConsultarCitas()" class="container">
+                    <img src="./assets/img/icons8-planificación-de-tareas-100.png" alt="imagen" class="image">
+                    <h3 class="title">Consultar cita médica</h3>
+                    <script>
+                        function irConsultarCitas() {
+                          window.location.href = "consultar_citas.html";
+                        }
+                    </script>
+                </div>
+                <div onclick="irCancelarCitas()" class="container">
+                    <img src="./assets/img/icons8-void-100.png" alt="imagen" class="image">
+                    <h3 class="title">Cancelar cita médica</h3>
+                </div>
+            </div>
+
+        </main>
+
+    </body>
+
+</html>

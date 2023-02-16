@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="./assets/js/prueba.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+        .dialog-confirm {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .dialog-content-confirm {
+            position: relative;
+            margin: auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            max-height: 90%;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            overflow: auto;
+        }
+
+        .dialog-header-confirm h2 {
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .dialog-body-confirm p {
+            margin-bottom: 1rem;
+        }
+
+        .dialog-footer-confirm {
+            margin-top: 1rem;
+            text-align: right;
+        }
+
+        .button-confirm {
+            background-color: #3b63b2c3;
+            border-radius: 5px;
+            color: white;
+            border: none;
+            
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .button-confirm:hover {
+            background-color: #4e79cebf;
+        }
+
+        .button-confirm:active {
+            background-color: #3b63b2c3;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="open-dialog-confirm" class="button-confirm">Confirmar cita</button>
+
+    <div id="dialog-confirm" class="dialog-confirm">
+        <div class="dialog-content-confirm">
+            <div class="dialog-header-confirm">
+                <h2>Resumen de la cita médica</h2>
+            </div>
+            <div class="dialog-body-confirm">
+                <p><strong>Fecha de registro:</strong> 07/02/2023</p>
+                <p><strong>Hora de la cita:</strong> 19:00</p>
+                <p><strong>Médico:</strong> Juan Gonzalez</p>
+                <p><strong>Área:</strong> Pediatria</p>
+                <p>Estimado Sr./Sra. Joel Luis,</p>
+                <p>Confirmamos que su cita médica de consulta ha sido agendada para el día 07 de febrero del 2023 a las
+                    19:00 con el Dr. Juan Gonzalez en el área de pediatria.</p>
+                <p>Por favor, preséntese 30 minutos antes.</p>
+            </div>
+            <div class="dialog-footer-confirm">
+                <button id="confirm-button-confirm" class="button-confirm">Confirmar</button>
+                <button id="cancel-button-confirm" class="button-confirm">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
